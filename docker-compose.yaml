@@ -1,0 +1,13 @@
+version: "3"
+services:
+  apiapp:
+    image: samirshh9/apiapp-docker:latest
+  restassured:
+    image: samirshh9/restassured-docker:latest
+    shm_size: "2gb"
+    depends_on:
+      - apiapp
+    environment:
+      - ApiHost=apiapp
+    volumes:
+      - ./Artifacts:/usr/share/automation/test-output
